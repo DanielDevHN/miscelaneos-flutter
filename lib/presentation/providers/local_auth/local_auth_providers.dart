@@ -9,25 +9,58 @@ final canCheckBiometricsProvider = FutureProvider<bool>((ref) async {
 
 enum localAuthStatus { authenticated, unauthenticated, authenticating }
 
-class LocalAuthStatus {
+class LocalAuthState {
   final bool didAuthenticate;
   final localAuthStatus status;
   final String message;
 
-  LocalAuthStatus({
+  LocalAuthState({
     this.didAuthenticate = false,
     this.status = localAuthStatus.unauthenticated,
     this.message = '',
   });
 
-  LocalAuthStatus copyWith({
+  LocalAuthState copyWith({
     bool? didAuthenticate,
     localAuthStatus? status,
     String? message,
   }) =>
-      LocalAuthStatus(
+      LocalAuthState(
         didAuthenticate: didAuthenticate ?? this.didAuthenticate,
         status: status ?? this.status,
         message: message ?? this.message,
       );
+
+  @override
+  String toString() {
+    return '''
+
+      didAuthenticate: $didAuthenticate,
+      status: $status,
+      message: $message,
+  ''';
+  }
 }
+
+class LocalAuthNotifier extends StateNotifier<LocalAuthState> {
+  LocalAuthNotifier() : super(LocalAuthState());
+
+  Future<(bool, String)> authenticateUser() async {
+    final (didAuthenticate, message) = await LocalAuthPlugin.authenticate();
+
+    state = state.copyWith(
+      didAuthenticate: didAuthenticate,
+      message: message,
+      status: didAuthenticate
+          ? localAuthStatus.authenticated
+          : localAuthStatus.unauthenticated,
+    );
+
+    return (didAuthenticate, message);
+  }
+}
+
+final localAuthProvider =
+    StateNotifierProvider<LocalAuthNotifier, LocalAuthState>((ref) {
+  return LocalAuthNotifier();
+});
