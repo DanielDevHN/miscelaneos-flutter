@@ -9,6 +9,7 @@ class LocationScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final userLocationAsync = ref.watch(userLocationProvider);
+    final watchLocationAsync = ref.watch(watchLocationProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -19,9 +20,10 @@ class LocationScreen extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             //!Current Location
-            const Text('Current Location'),
+            const Text('Current Location', style: TextStyle(fontSize: 20)),
             userLocationAsync.when(
-              data: (data) => Text('$data'),
+              data: (data) =>
+                  Text('$data', style: const TextStyle(fontSize: 20)),
               error: (error, stackTrace) => Text('Error: $error'),
               loading: () => LoadingAnimationWidget.staggeredDotsWave(
                   color: Color(Colors.blue.value), size: 50),
@@ -29,7 +31,13 @@ class LocationScreen extends ConsumerWidget {
 
             const SizedBox(height: 30),
             //!Location tracking
-            const Text('Location tracking'),
+            const Text('Location tracking', style: TextStyle(fontSize: 20)),
+            watchLocationAsync.when(
+                data: (data) =>
+                    Text('$data', style: const TextStyle(fontSize: 20)),
+                error: (error, stackTrace) => Text('Error: $error'),
+                loading: () => LoadingAnimationWidget.staggeredDotsWave(
+                    color: Color(Colors.blue.value), size: 50)),
           ],
         ),
       ),
