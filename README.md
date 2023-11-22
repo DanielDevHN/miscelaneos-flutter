@@ -10,3 +10,5 @@ sha-256
 cd android
 ./gradlew signingReport
 ```
+
+## Cambiar API Keys de Google Maps
