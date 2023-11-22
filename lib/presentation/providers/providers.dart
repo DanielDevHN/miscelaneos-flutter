@@ -1,10 +1,18 @@
 export 'app_state_provider.dart';
 
+export 'ads/admob_providers.dart';
+export 'ads/admob_points_provider.dart';
+export 'ads/show_ads_provider.dart';
+
+export 'badge/badge_counter_provider.dart';
+
 export 'compass/compass_provider.dart';
 
 export 'local_auth/local_auth_providers.dart';
 
 export 'location/user_location_provider.dart';
+export 'location/watch_location_provider.dart';
+export 'location/map_controller_provider.dart';
 
 export 'permissions/permissions_provider.dart';
 
