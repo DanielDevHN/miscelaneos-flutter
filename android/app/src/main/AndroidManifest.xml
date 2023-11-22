@@ -30,6 +30,15 @@
         android:label="miscelaneos"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-4832064765898430~5864515864"/>
+
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyCEQ0pUo0a_tSWisvnvPyW3Za2T7BLsneY"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
