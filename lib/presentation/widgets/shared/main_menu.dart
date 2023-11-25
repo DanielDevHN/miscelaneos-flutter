@@ -17,10 +17,14 @@ final menuItems = <MenuItem>[
   const MenuItem('Giróscopio', Icons.downloading, '/gyroscope'),
   const MenuItem('Acelerómetro', Icons.speed, '/accelerometer'),
   const MenuItem('Magnetometro', Icons.explore_outlined, '/magnetometer'),
+
   const MenuItem(
       'Giróscopio Ball', Icons.sports_baseball_outlined, '/gyroscope-ball'),
   const MenuItem('Brújula', Icons.explore, '/compass'),
+
   const MenuItem('Pokemons', Icons.catching_pokemon, '/pokemons'),
+  const MenuItem('Background Process', Icons.storage_rounded, '/db-pokemons'),
+
   const MenuItem('Biometrics', Icons.fingerprint, '/biometrics'),
 
   //Location
