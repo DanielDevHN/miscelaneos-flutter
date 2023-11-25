@@ -16,6 +16,7 @@ export 'permissions/permissions_screen.dart';
 
 export 'pokemons/pokemon_screen.dart';
 export 'pokemons/pokemons_screen.dart';
+export 'pokemons/db_pokemons_screen.dart';
 
 export 'sensors/accelometer_screen.dart';
 export 'sensors/compass_screen.dart';
